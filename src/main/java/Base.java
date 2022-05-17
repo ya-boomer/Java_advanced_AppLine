@@ -7,9 +7,11 @@ public class Base {
         Scanner scn = new Scanner(System.in);
         double a = 0;
         double b = 0;
-        char s;
         double result = 0;
+        char s;
         int len = 0;
+        int j = 0;
+        int h = 0;
         System.out.println("Введите что хотите сделать:\n 1. Зайти в калькулятор\n 2. Поиск максимальной длины элемента массива");
         if (scn.hasNextInt()) { //Считываем значение что хочет сделать пользователь
             int mean = scn.nextInt();
@@ -17,6 +19,7 @@ public class Base {
                 System.out.println("Заходим в массив\n Задайте размерность массива:");
                 if (scn.hasNextInt()) {
                     int size = scn.nextInt();
+                    String[] max_words = new String[size];
                     if (size < 1) System.out.println("Введено некорректное значение для длины массива");
                     else {
                         String[] words = new String[size];
@@ -28,10 +31,30 @@ public class Base {
                         for (int i = 0; i < size; i++) {
                             System.out.println(" " + words[i]); // Выводим на экран, полученный массив
                         }
-                        for (int i = 0; i < size; i++) { //Ищем максимальную длину элемента
-                            if (words[i].length() > len) len = words[i].length();
+                        for (int i = 0; i < size; i++) { //Ищем самое длинное слово и если несколько слов с одной длиной записываем в массив
+
+                            if (words[i].length() > len) {
+                                if (j == 0) {
+                                    j = 1;
+                                    max_words[0] = words[0];
+                                }
+                                len = words[i].length();
+                            } else if (words[i].length() == len) {
+                                j += 1;
+                                if (h < size - 1) {
+                                    h += 1;
+                                    System.out.println("h = " + h);
+                                    max_words[h] = words[i];
+                                    System.out.println(max_words[h]);
+                                }
+
+                            }
+
                         }
-                        System.out.println("Максимальная длина элемента массива: " + len);
+                        if (j > 0) {
+                            for (int i = 0; i < j; i++) //Выводим на экран самые длинные слова
+                                System.out.println("Максимальные слова из элементов массива: " + max_words[i]);
+                        }
 
                     }
                 } else System.out.println("Введено не число!");
