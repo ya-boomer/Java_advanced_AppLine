@@ -46,4 +46,6 @@ public class CalcOOP {
     public double division() {   // Метод для деления двух чисел, хранящихся в текущем объекте
         return getFirstNumber() / getSecondNumber();
     }
+
 }
+
