@@ -43,9 +43,12 @@ public class CalcOOP {
         return getFirstNumber() * getSecondNumber();
     }
 
-    public double division() {   // Метод для деления двух чисел, хранящихся в текущем объекте
-        return getFirstNumber() / getSecondNumber();
-    }
+
+        public double division () {   // Метод для деления двух чисел, хранящихся в текущем объекте
+             if (getSecondNumber() == 0) throw new ArithmeticException("В целом деление на ноль чисел с плавающей запятой разрешено, но мне нужна ошибка");
+                return getFirstNumber() / getSecondNumber();
+
+        }
 
 }
 

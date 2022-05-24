@@ -69,12 +69,10 @@ public class Base {
             }
             //myScn.close();
         } catch (NumberFormatException e) {
-            System.out.println("Было введено не число");
-            throw new  ArithmeticException("Error!!! " + e);
+            System.out.println(e.getMessage());
         }
         catch (InputMismatchException e){
-            System.out.println("Было введено не число из предложенного диапазона");
-            throw new  InputMismatchException("Error!!! " + e);
+            System.out.println(e.getMessage());
         }
     }
 }
